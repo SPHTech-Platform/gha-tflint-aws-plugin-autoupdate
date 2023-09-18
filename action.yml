@@ -14,7 +14,9 @@ runs:
 
     - name: Install latest version of GNU awk
       shell: bash
-      run: sudo apt-get install gawk
+      run: |
+        sudo apt-get update
+        sudo apt-get install gawk
 
     - name: Fetch latest version of tflint aws plugin and patch version
       shell: bash
