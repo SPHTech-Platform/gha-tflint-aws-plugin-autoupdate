@@ -1,0 +1,25 @@
+name: "Update pre-commit config versions"
+description: "Run pre-commit autoupdate to update pre-commit config versions"
+
+inputs:
+  GITHUB_TOKEN:
+    description: "Muilti-line list of secrets to expose to the build"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Fetch latest version of tflint aws plugin and patch version
+      shell: bash
+      run: sh update-tflint-aws.sh
+
+    - uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ inputs.GITHUB_TOKEN }}
+        branch: update/pre-commit-hooks
+        title: Update tflint aws plugin version
+        commit-message: "chore: update pre-commit hooks"
+        body: Update versions of tflint aws plugin to latest version.
