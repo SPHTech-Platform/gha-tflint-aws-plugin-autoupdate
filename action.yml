@@ -14,7 +14,7 @@ runs:
 
     - name: Fetch latest version of tflint aws plugin and patch version
       shell: bash
-      run: sh ./update-tflint-aws.sh
+      run: $GITHUB_ACTION_PATH/update-tflint-aws.sh
 
     - uses: peter-evans/create-pull-request@v5
       with:
