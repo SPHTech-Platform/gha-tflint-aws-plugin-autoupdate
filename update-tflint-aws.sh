@@ -14,7 +14,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Parse the JSON response to extract the latest release version
-latest_version=$(echo "$response" | grep -oP '"tag_name": "\K([^"]+)"')
+latest_version=$(echo "$response" | grep -oP '"tag_name": "\K([^"]+)')
 
 if [ -z "$latest_version" ]; then
   echo "Failed to extract latest version."
