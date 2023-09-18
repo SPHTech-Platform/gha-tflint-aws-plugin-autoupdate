@@ -23,7 +23,7 @@ fi
 
 echo "Latest version of $repo is $latest_version"
 
-hcl_file="$PWD/tflint.hcl"
+hcl_file="./.tflint.hcl"
 
 # Use awk to update the version value in the .hcl file within the plugin block
 awk -i inplace '
