@@ -22,6 +22,7 @@ if [ -z "$latest_version" ]; then
 fi
 
 echo "Latest version of $repo is $latest_version"
+strip_version=$(echo "$latest_version" | sed 's/v//g')
 
 hcl_file="./.tflint.hcl"
 
@@ -33,5 +34,5 @@ awk -i inplace '
     }
     }
     { print }
-' new_version="$latest_version" "$hcl_file"
-echo "Updated version in $hcl_file to $latest_version"
+' new_version="$strip_version" "$hcl_file"
+echo "Updated version in $hcl_file to $strip_version"
