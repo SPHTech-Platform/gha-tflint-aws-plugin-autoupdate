@@ -19,7 +19,7 @@ runs:
     - uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ inputs.GITHUB_TOKEN }}
-        branch: update/pre-commit-hooks
+        branch: update/tflint-aws-plugin
         title: Update tflint aws plugin version
-        commit-message: "chore: update pre-commit hooks"
+        commit-message: "chore: update tflint aws plugin"
         body: Update versions of tflint aws plugin to latest version.
