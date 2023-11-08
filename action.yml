@@ -18,14 +18,29 @@ runs:
         sudo apt-get update
         sudo apt-get install gawk -y
 
+    - name: Install stable version of gh cli
+      uses: sersoft-gmbh/setup-gh-cli-action@v2
+      with:
+        version: stable
+
     - name: Fetch latest version of tflint aws plugin and patch version
       shell: bash
       run: $GITHUB_ACTION_PATH/update-tflint-aws.sh
 
-    - uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ inputs.GITHUB_TOKEN }}
-        branch: update/tflint-aws-plugin
-        title: Update tflint aws plugin version
-        commit-message: "chore: update tflint aws plugin"
-        body: Update versions of tflint aws plugin to latest version.
+    - name: Create PR with gh cli
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      run: |
+        git checkout update/tflint-aws-plugin
+        git add .
+        git commit -m "chore: update tflint aws plugin"
+        gh pr create -f
+
+    # - uses: peter-evans/create-pull-request@v5
+    #   with:
+    #     token: ${{ inputs.GITHUB_TOKEN }}
+    #     branch: update/tflint-aws-plugin
+    #     title: Update tflint aws plugin version
+    #     commit-message: "chore: update tflint aws plugin"
+    #     body: Update versions of tflint aws plugin to latest version.
