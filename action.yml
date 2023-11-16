@@ -28,4 +28,4 @@ runs:
         branch: update/tflint-aws-plugin
         title: Update tflint aws plugin version
         commit-message: "chore: update tflint aws plugin"
-        body: Update versions of tflint aws plugin to latest version.
+        body: "Update versions of tflint aws plugin to latest version. Please close and open PR manually to trigger CI checks."
