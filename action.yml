@@ -37,6 +37,7 @@ runs:
         git checkout -b update/tflint-aws-plugin
         git add .
         git commit -m "chore: update tflint aws plugin"
+        git push origin update/tflint-aws-plugin
         gh pr create -f
 
     # - uses: peter-evans/create-pull-request@v5
